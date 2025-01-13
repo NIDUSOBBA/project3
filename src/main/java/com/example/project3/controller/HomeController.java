@@ -10,4 +10,11 @@ public class HomeController {
     public String home() {
         return "Welcome";
     }
+
+    @GetMapping("/ot")
+    public String ot() {
+        return "Отдай сволочь!";
+    }
+
+
 }

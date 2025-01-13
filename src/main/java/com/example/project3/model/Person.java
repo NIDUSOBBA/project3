@@ -4,14 +4,18 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
 @Getter
 @Setter
+
 public class Person {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column
@@ -24,7 +28,11 @@ public class Person {
     private String email;
 
     @Column
-    private String role;
+    @CreatedDate
+    private String password;
+
+    @OneToMany(mappedBy = "customers")
+    private List<Task> tasks;
 
     public Person(String username, int age, String email) {
         this.username = username;
